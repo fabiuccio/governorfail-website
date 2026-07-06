@@ -339,8 +339,7 @@
       var input = form.querySelector('input[type="email"]');
       if (!input || !input.checkValidity()) return;
       e.preventDefault();
-      // Fire the subscribe in the background (keepalive survives navigation),
-      // then deliver the matching edition directly via /download.
+      // Fire the subscribe in the background.
       if (KIT_ACTION.indexOf('http') === 0) {
         var body = 'email_address=' + encodeURIComponent(input.value) +
           '&fields[quadrant_result]=' + r.computed +
@@ -351,7 +350,23 @@
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body });
         } catch (err) { /* deliver the file regardless */ }
       }
-      window.location.href = '/download?q=' + encodeURIComponent(r.computed);
+      // Deliver the matching edition directly (form submit is a real user
+      // gesture, so the download is allowed). The result screen stays put.
+      var pdf = '/downloads/q-7f3a9c/debt-quadrant-' + r.computed + '.pdf';
+      var a = document.createElement('a');
+      a.href = pdf;
+      a.setAttribute('download', '');
+      document.body.appendChild(a);
+      try { a.click(); } catch (err) { /* manual link below */ }
+      document.body.removeChild(a);
+      // Replace the gate with a thank-you; leave the result visible.
+      gate.innerHTML =
+        '<div class="signup-inner">' +
+        '<h2>Thanks for subscribing</h2>' +
+        '<p>Your ' + NAMES[r.computed] + ' edition is downloading. If it didn’t start, ' +
+        '<a href="' + pdf + '" download>download it here</a>. ' +
+        'Check your inbox to confirm your subscription.</p>' +
+        '</div>';
     });
 
     inner.appendChild(form);
