@@ -1082,6 +1082,202 @@ section { border-bottom: 1px solid var(--border); }
 }
 .essay-standing .plug .title-ref { font-style: italic; color: var(--text); }
 
+/* ---------- Quadrant assessment ---------- */
+
+.quad-wrap { max-width: 760px; }
+
+.quad-intro .quad-lead {
+  margin: 0 0 32px;
+  font-size: 19px;
+  line-height: 1.6;
+  color: var(--mid);
+  max-width: 560px;
+  text-wrap: pretty;
+}
+.quad-intro .btn-primary { border: 1px solid var(--accent); cursor: pointer; }
+.quad-free {
+  margin: 16px 0 0;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--faint);
+}
+
+/* progress */
+.quad-progress { margin-bottom: 32px; }
+.quad-progress-label {
+  margin-bottom: 10px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.quad-progress-bar {
+  height: 3px;
+  background: var(--hairline);
+  overflow: hidden;
+}
+.quad-progress-bar span {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.25s ease;
+}
+
+/* question */
+.quad-qtext {
+  margin: 0 0 28px;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(22px, 3vw, 28px);
+  line-height: 1.3;
+  color: var(--heading);
+  text-wrap: pretty;
+}
+.quad-options { display: grid; gap: 12px; }
+.quad-option {
+  text-align: left;
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 18px 20px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.quad-option:hover { border-color: var(--accent); }
+.quad-option:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.quad-option.is-selected { border-color: var(--accent); background: var(--bg-alt); }
+
+.quad-nav { margin-top: 28px; display: flex; gap: 12px; }
+.quad-nav .btn-secondary { cursor: pointer; }
+
+/* result */
+.quad-figure {
+  margin: 0 0 40px;
+  border: 1px solid var(--border);
+  background: #F3EDDE;
+}
+.quad-figure svg { display: block; width: 100%; height: auto; }
+
+.quad-headline {
+  margin: 0 0 8px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(24px, 3.2vw, 34px);
+  line-height: 1.14;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--heading);
+}
+.quad-headline .quad-place { color: var(--accent); }
+.quad-note {
+  margin: 0 0 24px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--faint);
+}
+.quad-interp {
+  margin: 0 0 28px;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--mid);
+  text-wrap: pretty;
+}
+.quad-callout {
+  margin: 0 0 28px;
+  padding: 24px 26px;
+  background: var(--bg-alt);
+  border-left: 3px solid var(--accent);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text);
+  text-wrap: pretty;
+}
+.quad-callout strong { color: var(--accent); }
+.quad-honesty {
+  margin: 0 0 8px;
+  padding-top: 24px;
+  border-top: 1px solid var(--hairline);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+.quad-honesty em { color: var(--mid); font-style: italic; }
+
+.quad-gate { border-top: none; margin-top: 8px; }
+.quad-gate .signup-inner { padding: 40px 0; text-align: left; }
+.quad-gate .signup-inner > p { margin-left: 0; }
+.quad-gate .signup-form { justify-content: flex-start; }
+.quad-gate .signup-fine, .quad-gate .signup-success { text-align: left; }
+
+.quad-share {
+  margin-top: 8px;
+  padding-top: 28px;
+  border-top: 1px solid var(--hairline);
+}
+.quad-share .btn-secondary { cursor: pointer; }
+.quad-share-note {
+  margin: 12px 0 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--faint);
+  max-width: 520px;
+}
+.quad-retake {
+  margin-top: 20px;
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.quad-retake:hover { color: var(--accent); }
+
+.quad-fallback {
+  max-width: 620px;
+}
+.quad-fallback > p {
+  margin: 0 0 24px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--mid);
+}
+
+/* ---------- Download page ---------- */
+
+.download-wrap { max-width: 620px; }
+.download-recap {
+  margin: 0 0 32px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--mid);
+  text-wrap: pretty;
+}
+.download-auto {
+  margin: 16px 0 0;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--faint);
+}
+.download-help {
+  margin: 40px 0 0;
+  font-size: 14px;
+  color: var(--faint);
+}
+.download-help a { color: var(--muted); }
+
 /* ---------- Small screens ---------- */
 
 @media (max-width: 640px) {

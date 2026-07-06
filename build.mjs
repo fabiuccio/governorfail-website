@@ -1,7 +1,7 @@
 /* Static build for governorfail.com. Emits a self-contained dist/:
    - copies the hand-authored pages/assets (index.html, source-notes.html,
-     instruments/, updates/, privacy/, contact/, styles.css, assets/, robots.txt,
-     downloads/) verbatim, and
+     quadrant/, download/, updates/, privacy/, contact/, styles.css, assets/,
+     robots.txt, downloads/) verbatim, and
    - renders essays from content/essays/*.md into prerendered HTML plus the essays
      index, RSS feed, and sitemap.
    Source files (this script, content/, partials/, scripts/) are never copied, so
@@ -28,12 +28,12 @@ const NAV = `  <header class="site-header">
       <a class="logo" href="/"><span class="diamond" aria-hidden="true">◇</span>Govern or Fail</a>
       <div class="nav-links">
         <a href="/#book">Book</a>
-        <a href="/instruments/">Instruments</a>
+        <a href="/quadrant/">Quadrant</a>
         <a href="/essays/">Essays</a>
         <a href="/updates/">Updates</a>
         <a href="/source-notes.html">Source Notes</a>
         <a href="/contact/">Contact</a>
-        <a class="btn-buy" href="/instruments/">Get the instruments</a>
+        <a class="btn-buy" href="/quadrant/">Take the assessment</a>
       </div>
     </nav>
   </header>`;
@@ -48,7 +48,7 @@ const FOOTER = `  <footer class="site-footer">
         <p class="footer-views">The views expressed are the author's own.</p>
       </div>
       <nav class="footer-links" aria-label="Footer">
-        <a href="/instruments/">Instruments</a>
+        <a href="/quadrant/">Quadrant</a>
         <a href="/essays/">Essays</a>
         <a href="/updates/">Updates</a>
         <a href="/source-notes.html">Source Notes</a>
@@ -179,7 +179,7 @@ function essayPage(essay, signup) {
 ${marked.parse(essay.body)}
       </div>
       <div class="essay-standing">
-        <p class="plug"><em class="title-ref">Govern or Fail</em> — a diagnostic field report on enterprise AI governance. <a href="/instruments/">See the Diagnostic Instruments →</a></p>
+        <p class="plug"><em class="title-ref">Govern or Fail</em> — a diagnostic field report on enterprise AI governance. <a href="/quadrant/">Map your AI estate on the Debt Quadrant →</a></p>
       </div>
 ${signup}
     </article>`;
@@ -206,7 +206,7 @@ ${essays
   )
   .join('\n')}
         </ul>`
-    : `        <p class="essay-empty">No essays published yet. Sign up on the <a href="/instruments/">instruments page</a> to get them by email as they appear.</p>`;
+    : `        <p class="essay-empty">No essays published yet. Take the <a href="/quadrant/">Quadrant assessment</a> to get them by email as they appear.</p>`;
 
   const content = `    <section>
       <div class="section-pad wrap notes-hero">
@@ -258,9 +258,10 @@ ${items}
 }
 
 function sitemap(essays) {
+  // /download is intentionally excluded (noindex router page).
   const staticUrls = [
     `${SITE}/`,
-    `${SITE}/instruments/`,
+    `${SITE}/quadrant/`,
     `${SITE}/essays/`,
     `${SITE}/updates/`,
     `${SITE}/privacy/`,
@@ -288,7 +289,7 @@ await mkdir(DIST, { recursive: true });
 
 // Copy the hand-authored static site into dist (explicit allowlist).
 const STATIC_FILES = ['index.html', 'source-notes.html', 'styles.css', 'robots.txt'];
-const STATIC_DIRS = ['assets', 'instruments', 'updates', 'privacy', 'contact', 'downloads'];
+const STATIC_DIRS = ['assets', 'quadrant', 'download', 'updates', 'privacy', 'contact', 'downloads'];
 for (const f of STATIC_FILES) {
   await cp(path.join(ROOT, f), path.join(DIST, f));
 }

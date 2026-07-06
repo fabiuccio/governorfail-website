@@ -46,12 +46,12 @@
       <a class="logo" href="/"><span class="diamond" aria-hidden="true">◇</span>Govern or Fail</a>
       <div class="nav-links">
         <a href="/#book">Book</a>
-        <a href="/instruments/">Instruments</a>
+        <a href="/quadrant/">Quadrant</a>
         <a href="/essays/">Essays</a>
         <a href="/updates/">Updates</a>
         <a href="/source-notes.html">Source Notes</a>
         <a href="/contact/">Contact</a>
-        <a class="btn-buy" href="/instruments/">Get the instruments</a>
+        <a class="btn-buy" href="/quadrant/">Take the assessment</a>
       </div>
     </nav>
   </header>
@@ -70,8 +70,8 @@
           <p class="hero-sub"><em class="title-ref">Govern or Fail</em> is a diagnostic field report on why AI governance breaks down inside real organisations, and why policies, committees, and certification are not enough without runtime evidence.</p>
           <p class="pub-note">Launching September 2026</p>
           <div class="hero-ctas">
-            <a class="btn btn-primary" href="#signup">Get notified &amp; receive the instruments</a>
-            <a class="btn btn-secondary" href="/instruments/">See the instruments</a>
+            <a class="btn btn-primary" href="/quadrant/">Take the assessment</a>
+            <a class="btn btn-secondary" href="/source-notes.html">Read source notes</a>
           </div>
         </div>
         <div class="hero-cover">
@@ -80,19 +80,12 @@
       </div>
     </section>
 
-    <!-- ============ SIGNUP (email capture) ============ -->
-    <section class="signup" id="signup" aria-labelledby="signup-heading">
+    <!-- ============ ASSESSMENT CTA ============ -->
+    <section class="signup" id="assess" aria-labelledby="assess-heading">
       <div class="signup-inner">
-        <h2 id="signup-heading">Get the Diagnostic Instruments</h2>
-        <p>Ten pressure tests for enterprise AI governance — the working index from the book, free. Plus launch notification and occasional essays. No spam, unsubscribe anytime.</p>
-        <!-- TODO-KIT: replace KIT_FORM_ACTION_URL with the Kit inline form action URL (canonical copy: partials/signup-form.html) -->
-        <form class="signup-form" action="KIT_FORM_ACTION_URL" method="post" novalidate>
-          <label class="visually-hidden" for="signup-email">Email address</label>
-          <input class="signup-input" id="signup-email" type="email" name="email_address" required autocomplete="email" placeholder="you@company.com">
-          <button class="btn btn-primary" type="submit">Send me the instruments</button>
-          <p class="signup-fine">By subscribing you agree to the <a href="/privacy/">privacy policy</a>. Double opt-in — you'll confirm by email.</p>
-          <p class="signup-success" role="status" hidden>Check your inbox to confirm — the instruments arrive right after.</p>
-        </form>
+        <h2 id="assess-heading">Map your AI estate in one afternoon</h2>
+        <p>Take the 3-minute Quadrant assessment — free, instant result. Your edition of the full instrument (position, direction of travel, first three moves, scoring rubric) arrives by email.</p>
+        <a class="btn btn-primary" href="/quadrant/">Take the assessment</a>
       </div>
     </section>
 
@@ -294,13 +287,28 @@
       </div>
     </section>
 
+    <!-- ============ SECONDARY EMAIL (quiz-skippers) ============ -->
+    <section class="signup" id="signup" aria-labelledby="signup-heading">
+      <div class="signup-inner">
+        <h2 id="signup-heading">Prefer email to a quiz?</h2>
+        <p>Get the complete instrument — all four positions included — plus launch notification and occasional essays. No spam, unsubscribe anytime.</p>
+        <form class="signup-form" action="https://app.kit.com/forms/9650426/subscriptions" method="post" novalidate>
+          <label class="visually-hidden" for="signup-email">Email address</label>
+          <input class="signup-input" id="signup-email" type="email" name="email_address" required autocomplete="email" placeholder="you@company.com">
+          <button class="btn btn-primary" type="submit">Send me the instrument</button>
+          <p class="signup-fine">By subscribing you agree to the <a href="/privacy/">privacy policy</a>. Double opt-in — you'll confirm by email.</p>
+          <p class="signup-success" role="status" hidden>Check your inbox to confirm — your edition arrives right after.</p>
+        </form>
+      </div>
+    </section>
+
     <!-- ============ FINAL CTA ============ -->
     <section aria-labelledby="final-title">
       <div class="final-cta">
         <h2 id="final-title">Govern or <span class="fail">Fail</span></h2>
         <p>Enterprise AI does not become governable because a committee approves it. It becomes governable when the organisation can prove what happened, who owned it, and how the system was controlled in production.</p>
-        <p class="pub-note">Launching September 2026 — get notified and receive the Diagnostic Instruments now.</p>
-        <a class="btn btn-primary" href="#signup">Get the instruments</a>
+        <p class="pub-note">Launching September 2026 — see where your estate stands now.</p>
+        <a class="btn btn-primary" href="/quadrant/">Take the assessment</a>
       </div>
     </section>
   </main>
@@ -316,7 +324,7 @@
         <p class="footer-views">The views expressed are the author's own.</p>
       </div>
       <nav class="footer-links" aria-label="Footer">
-        <a href="/instruments/">Instruments</a>
+        <a href="/quadrant/">Quadrant</a>
         <a href="/essays/">Essays</a>
         <a href="/updates/">Updates</a>
         <a href="/source-notes.html">Source Notes</a>

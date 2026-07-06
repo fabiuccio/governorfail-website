@@ -1,24 +1,25 @@
 <!--
   CANONICAL SIGNUP FORM (single source of truth for ESP integration).
-  This exact block is embedded on the home page (#signup), on /instruments/,
-  and at the foot of every essay. To swap the email provider (Kit -> MailerLite,
-  etc.) or wire the real form: replace KIT_FORM_ACTION_URL everywhere it appears
-  (home + instruments + build.mjs essay template) with the provider's form action,
-  e.g. https://app.kit.com/forms/XXXXXXX/subscriptions
+  This generic (no hidden fields) block is embedded on the home page (#signup)
+  and at the foot of every essay. The /quadrant result screen builds its own
+  variant with hidden quadrant_* fields in assets/quadrant.js. The form action
+  is Kit form 9650426. To swap the email provider (Kit -> MailerLite, etc.),
+  replace the action URL https://app.kit.com/forms/9650426/subscriptions
+  everywhere it appears (index.html, this file, quadrant/index.html, and the
+  KIT_ACTION constant in assets/quadrant.js) with the provider's form action.
   Email-only, no name field (lower friction). Double opt-in is configured in Kit.
   Progressive enhancement lives in /assets/signup.js (inline success, no redirect).
 -->
 <section class="signup" id="signup" aria-labelledby="signup-heading">
   <div class="signup-inner">
-    <h2 id="signup-heading">Get the Diagnostic Instruments</h2>
-    <p>Ten pressure tests for enterprise AI governance — the working index from the book, free. Plus launch notification and occasional essays. No spam, unsubscribe anytime.</p>
-    <!-- TODO-KIT: replace KIT_FORM_ACTION_URL with the Kit inline form action URL -->
-    <form class="signup-form" action="KIT_FORM_ACTION_URL" method="post" novalidate>
+    <h2 id="signup-heading">Get the Debt Quadrant instrument</h2>
+    <p>The complete AI Governance Debt Quadrant — all four positions — plus launch notification and occasional essays. No spam, unsubscribe anytime.</p>
+    <form class="signup-form" action="https://app.kit.com/forms/9650426/subscriptions" method="post" novalidate>
       <label class="visually-hidden" for="signup-email">Email address</label>
       <input class="signup-input" id="signup-email" type="email" name="email_address" required autocomplete="email" placeholder="you@company.com">
-      <button class="btn btn-primary" type="submit">Send me the instruments</button>
+      <button class="btn btn-primary" type="submit">Send me the instrument</button>
       <p class="signup-fine">By subscribing you agree to the <a href="/privacy/">privacy policy</a>. Double opt-in — you'll confirm by email.</p>
-      <p class="signup-success" role="status" hidden>Check your inbox to confirm — the instruments arrive right after.</p>
+      <p class="signup-success" role="status" hidden>Check your inbox to confirm — your edition arrives right after.</p>
     </form>
   </div>
 </section>

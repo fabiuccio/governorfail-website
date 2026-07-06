@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The AI Governance Debt Quadrant | Govern or Fail</title>
+  <meta name="description" content="A 3-minute self-assessment that maps your enterprise AI estate on the Governance Debt Quadrant. Free, instant result — your answers never leave your browser.">
+  <link rel="canonical" href="https://governorfail.com/quadrant/">
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="Govern or Fail">
+  <meta property="og:url" content="https://governorfail.com/quadrant/">
+  <meta property="og:title" content="Where does your AI estate actually stand?">
+  <meta property="og:description" content="Ten questions, three minutes. Map your enterprise AI estate on the Governance Debt Quadrant — free, instant result.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://governorfail.com/assets/og-quadrant.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Where does your AI estate actually stand?">
+  <meta name="twitter:description" content="Ten questions, three minutes. Map your enterprise AI estate on the Governance Debt Quadrant — free, instant result.">
+  <meta name="twitter:image" content="https://governorfail.com/assets/og-quadrant.png">
+
+  <link rel="stylesheet" href="/assets/fonts/fonts.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body id="top">
+
+  <!-- ============ NAV ============ -->
+  <header class="site-header">
+    <nav class="site-nav wrap" aria-label="Main">
+      <a class="logo" href="/"><span class="diamond" aria-hidden="true">◇</span>Govern or Fail</a>
+      <div class="nav-links">
+        <a href="/#book">Book</a>
+        <a href="/quadrant/">Quadrant</a>
+        <a href="/essays/">Essays</a>
+        <a href="/updates/">Updates</a>
+        <a href="/source-notes.html">Source Notes</a>
+        <a href="/contact/">Contact</a>
+        <a class="btn-buy" href="/quadrant/">Take the assessment</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <div class="section-pad wrap quad-wrap">
+        <a class="back-link" href="/"><span aria-hidden="true">←</span> Back to the book</a>
+
+        <!-- Intro (prerendered; JS takes over on Start) -->
+        <div class="quad-intro" id="quad-intro">
+          <p class="kicker">The Governance Debt Quadrant</p>
+          <h1 class="section-title">Where does your AI estate actually stand?</h1>
+          <p class="quad-lead">Ten questions, three minutes. The only wrong answer is a flattering one.</p>
+          <button class="btn btn-primary" id="quad-start" type="button">Start the assessment</button>
+          <p class="quad-free">Free — no email needed for your result. Your answers never leave your browser.</p>
+        </div>
+
+        <!-- JS renders questions + result here -->
+        <div class="quad-flow" id="quad-flow" hidden aria-live="polite"></div>
+
+        <!-- No-JS fallback -->
+        <noscript>
+          <div class="quad-fallback">
+            <p>This assessment runs entirely in your browser and needs JavaScript enabled. Prefer email? Get the complete instrument — all four positions included — and it will arrive right after you confirm.</p>
+            <form class="signup-form" action="https://app.kit.com/forms/9650426/subscriptions" method="post" novalidate>
+              <label class="visually-hidden" for="nojs-email">Email address</label>
+              <input class="signup-input" id="nojs-email" type="email" name="email_address" required autocomplete="email" placeholder="you@company.com">
+              <button class="btn btn-primary" type="submit">Send me the instrument</button>
+              <p class="signup-fine">By subscribing you agree to the <a href="/privacy/">privacy policy</a>. Double opt-in — you'll confirm by email.</p>
+            </form>
+          </div>
+        </noscript>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="footer-inner wrap">
+      <div class="footer-id">
+        <p class="footer-logo"><span class="diamond" aria-hidden="true">◇</span>Govern or Fail</p>
+        <p class="footer-sub">A Diagnostic Field Report on Enterprise AI Governance</p>
+        <p>© 2026 Fabio Aulico. All rights reserved.</p>
+        <p>Guardrail Press</p>
+        <p class="footer-views">The views expressed are the author's own.</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="/quadrant/">Quadrant</a>
+        <a href="/essays/">Essays</a>
+        <a href="/updates/">Updates</a>
+        <a href="/source-notes.html">Source Notes</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/assets/quadrant.js" defer></script>
+  <!-- Vercel Web Analytics (cookieless, no consent banner). Enable Web Analytics in the Vercel project settings. -->
+  <script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>
