@@ -1,7 +1,7 @@
 {
   "name": "governorfail-website",
   "version": "1.0.0",
-  "description": "Companion site for the book Govern or Fail by Fabio Aulico (Guardrail Press).",
+  "description": "Companion site for the book Govern or Fail: A Diagnostic Field Report on Enterprise AI Governance by Fabio Aulico (Guardrail Press).",
   "private": true,
   "type": "module",
   "scripts": {

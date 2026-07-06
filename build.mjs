@@ -52,6 +52,7 @@ const FOOTER = `  <footer class="site-footer">
         <a href="/essays/">Essays</a>
         <a href="/updates/">Updates</a>
         <a href="/source-notes.html">Source Notes</a>
+        <a href="/vocabulary/">Vocabulary</a>
         <a href="/privacy/">Privacy</a>
         <a href="/contact/">Contact</a>
       </nav>
@@ -189,7 +190,7 @@ function essayPage(essay, signup) {
 ${marked.parse(essay.body)}
       </div>
       <div class="essay-standing">
-        <p class="plug"><em class="title-ref">Govern or Fail</em> — a diagnostic field report on enterprise AI governance. <a href="/quadrant/">Map your AI estate on the Debt Quadrant →</a></p>
+        <p class="plug"><em class="title-ref">Govern or Fail</em> — a diagnostic field report on enterprise AI governance. <a href="/quadrant/">Take the 3-minute Quadrant assessment →</a></p>
       </div>
 ${signup}
     </article>`;
@@ -273,6 +274,7 @@ function sitemap(essays) {
     `${SITE}/`,
     `${SITE}/quadrant/`,
     `${SITE}/essays/`,
+    `${SITE}/vocabulary/`,
     `${SITE}/updates/`,
     `${SITE}/privacy/`,
     `${SITE}/contact/`,
@@ -299,7 +301,7 @@ await mkdir(DIST, { recursive: true });
 
 // Copy the hand-authored static site into dist (explicit allowlist).
 const STATIC_FILES = ['index.html', 'source-notes.html', 'styles.css', 'robots.txt'];
-const STATIC_DIRS = ['assets', 'quadrant', 'download', 'updates', 'privacy', 'contact', 'downloads'];
+const STATIC_DIRS = ['assets', 'quadrant', 'download', 'updates', 'privacy', 'contact', 'vocabulary', 'downloads'];
 for (const f of STATIC_FILES) {
   await cp(path.join(ROOT, f), path.join(DIST, f));
 }

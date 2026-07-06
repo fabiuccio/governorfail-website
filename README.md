@@ -1,7 +1,8 @@
 # Govern or Fail — governorfail.com
 
-Companion site for the book *Govern or Fail: Why Enterprise AI Fails After the
-Demo* by Fabio Aulico (Guardrail Press, launching **September 2026**).
+Companion site for the book *Govern or Fail: A Diagnostic Field Report on
+Enterprise AI Governance* by Fabio Aulico (Guardrail Press, available
+**September 2026**).
 
 Static output, no server runtime, no database. A tiny Node build step copies the
 hand-authored pages and renders the essays, RSS, and sitemap into a self-contained

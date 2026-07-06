@@ -230,7 +230,7 @@
     parts.push(lbl(110, 388, 'start', 'DORMANT'));
     // axis labels
     parts.push('<text x="300" y="432" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="700" font-size="13" letter-spacing="0.5" fill="' + ch + '">GOVERNANCE DISCIPLINE</text>');
-    parts.push('<text x="300" y="450" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="13" fill="' + muted + '">enforcement, not documentation</text>');
+    parts.push('<text x="300" y="450" text-anchor="middle" font-family="Newsreader, serif" font-style="italic" font-size="13" fill="' + muted + '">evidence and enforcement</text>');
     parts.push('<text x="104" y="416" text-anchor="start" font-family="IBM Plex Mono, monospace" font-size="11" fill="' + muted + '">low</text>');
     parts.push('<text x="496" y="416" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="11" fill="' + muted + '">high</text>');
     parts.push('<g transform="translate(46,220) rotate(-90)">');

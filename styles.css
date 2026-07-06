@@ -45,10 +45,10 @@ body {
 img { max-width: 100%; }
 
 /* Base link colour so no link ever falls back to the browser blue/purple.
+   Buttons are excluded so their own colours win in every state (incl. :visited).
    Component rules (nav, footer, prose, article, etc.) override as needed. */
-a { color: var(--accent); }
-a:visited { color: var(--accent); }
-a:hover { color: var(--text); }
+a:not(.btn) { color: var(--accent); }
+a:not(.btn):hover { color: var(--text); }
 
 a:focus-visible,
 .btn:focus-visible {
@@ -938,6 +938,14 @@ section { border-bottom: 1px solid var(--border); }
 }
 .errata-empty a { color: var(--accent); }
 
+.checked-note {
+  margin: 0 0 40px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--faint);
+}
+
 /* ---------- Prose (privacy, generic) ---------- */
 
 .prose { max-width: 720px; }
@@ -1087,6 +1095,47 @@ section { border-bottom: 1px solid var(--border); }
   color: var(--mid);
 }
 .essay-standing .plug .title-ref { font-style: italic; color: var(--text); }
+
+/* ---------- Homepage: argument, screening note, concepts line ---------- */
+
+.screening-note {
+  margin: 0 0 32px;
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  color: var(--accent);
+}
+
+.argues { max-width: 680px; margin-bottom: 44px; }
+.argues p {
+  margin: 0 0 20px;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--mid);
+  text-wrap: pretty;
+}
+.argues p:last-child { margin-bottom: 0; }
+.argues strong { color: var(--heading); font-weight: 600; }
+
+.readers-line {
+  margin: 40px 0 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 640px;
+  text-wrap: pretty;
+}
+
+.concepts-line {
+  margin: 48px 0 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 720px;
+  text-wrap: pretty;
+}
+.concepts-line a { white-space: nowrap; }
 
 /* ---------- Quadrant assessment ---------- */
 
