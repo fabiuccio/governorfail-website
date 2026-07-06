@@ -5,24 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Govern or Fail | Enterprise AI Governance Book by Fabio Aulico</title>
   <meta name="description" content="Govern or Fail is a diagnostic field report on enterprise AI governance, runtime evidence, shadow AI, governance debt, and why AI fails after the demo.">
+  <link rel="canonical" href="https://governorfail.com/">
 
   <!-- Open Graph -->
+  <meta property="og:site_name" content="Govern or Fail">
+  <meta property="og:url" content="https://governorfail.com/">
   <meta property="og:title" content="Govern or Fail | Enterprise AI Governance Book by Fabio Aulico">
   <meta property="og:description" content="A diagnostic field report on why AI governance breaks down inside real organisations — and why policies, committees, and certification are not enough without runtime evidence.">
   <meta property="og:type" content="book">
-  <!-- REPLACE with an absolute URL once the site has a domain, e.g. https://yourdomain.com/assets/social-1080.png -->
-  <meta property="og:image" content="assets/social-1080.png">
+  <meta property="og:image" content="https://governorfail.com/assets/og-default.png">
 
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Govern or Fail | Enterprise AI Governance Book by Fabio Aulico">
   <meta name="twitter:description" content="A diagnostic field report on enterprise AI governance, runtime evidence, shadow AI, and governance debt.">
-  <meta name="twitter:image" content="assets/social-1080.png">
+  <meta name="twitter:image" content="https://governorfail.com/assets/og-default.png">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/assets/fonts/fonts.css">
+  <link rel="stylesheet" href="/styles.css">
 
   <script type="application/ld+json">
   {
@@ -43,14 +43,15 @@
   <!-- ============ NAV ============ -->
   <header class="site-header">
     <nav class="site-nav wrap" aria-label="Main">
-      <a class="logo" href="#top"><span class="diamond" aria-hidden="true">◇</span>Govern or Fail</a>
+      <a class="logo" href="/"><span class="diamond" aria-hidden="true">◇</span>Govern or Fail</a>
       <div class="nav-links">
-        <a href="#book">The Book</a>
-        <a href="#why">Why It Matters</a>
-        <a href="#contents">Contents</a>
-        <a href="#author">Author</a>
-        <a href="#resources">Resources</a>
-        <span class="btn-buy btn-soon">Sept 2026</span>
+        <a href="/#book">Book</a>
+        <a href="/instruments/">Instruments</a>
+        <a href="/essays/">Essays</a>
+        <a href="/updates/">Updates</a>
+        <a href="/source-notes.html">Source Notes</a>
+        <a href="/contact/">Contact</a>
+        <a class="btn-buy" href="/instruments/">Get the instruments</a>
       </div>
     </nav>
   </header>
@@ -67,14 +68,31 @@
           <p class="hero-subtitle">A Diagnostic Field Report on Enterprise AI Governance</p>
           <p class="hero-lede">Enterprise AI rarely fails in the demo. It fails when the organisation cannot own what happens in production.</p>
           <p class="hero-sub"><em class="title-ref">Govern or Fail</em> is a diagnostic field report on why AI governance breaks down inside real organisations, and why policies, committees, and certification are not enough without runtime evidence.</p>
+          <p class="pub-note">Launching September 2026</p>
           <div class="hero-ctas">
-            <span class="btn btn-primary btn-soon">Available September 2026</span>
-            <a class="btn btn-secondary" href="source-notes.html">Read source notes</a>
+            <a class="btn btn-primary" href="#signup">Get notified &amp; receive the instruments</a>
+            <a class="btn btn-secondary" href="/instruments/">See the instruments</a>
           </div>
         </div>
         <div class="hero-cover">
           <img src="assets/Govern-or-Fail_ebook_1600x2560.png" alt="Book cover of Govern or Fail: A Diagnostic Field Report on Enterprise AI Governance, by Fabio Aulico, published by Guardrail Press" width="1600" height="2560">
         </div>
+      </div>
+    </section>
+
+    <!-- ============ SIGNUP (email capture) ============ -->
+    <section class="signup" id="signup" aria-labelledby="signup-heading">
+      <div class="signup-inner">
+        <h2 id="signup-heading">Get the Diagnostic Instruments</h2>
+        <p>Ten pressure tests for enterprise AI governance — the working index from the book, free. Plus launch notification and occasional essays. No spam, unsubscribe anytime.</p>
+        <!-- TODO-KIT: replace KIT_FORM_ACTION_URL with the Kit inline form action URL (canonical copy: partials/signup-form.html) -->
+        <form class="signup-form" action="KIT_FORM_ACTION_URL" method="post" novalidate>
+          <label class="visually-hidden" for="signup-email">Email address</label>
+          <input class="signup-input" id="signup-email" type="email" name="email_address" required autocomplete="email" placeholder="you@company.com">
+          <button class="btn btn-primary" type="submit">Send me the instruments</button>
+          <p class="signup-fine">By subscribing you agree to the <a href="/privacy/">privacy policy</a>. Double opt-in — you'll confirm by email.</p>
+          <p class="signup-success" role="status" hidden>Check your inbox to confirm — the instruments arrive right after.</p>
+        </form>
       </div>
     </section>
 
@@ -265,7 +283,7 @@
           <div class="resource-card">
             <h2>Resources and source notes</h2>
             <p>The book relies on public cases, regulatory records, company disclosures, published research, and cited standards. Source notes and selected references are available here.</p>
-            <a class="btn btn-secondary" href="source-notes.html">Read source notes</a>
+            <a class="btn btn-secondary" href="/source-notes.html">Read source notes</a>
           </div>
           <div class="resource-card">
             <h2>For discussions, reviews, or speaking</h2>
@@ -281,8 +299,8 @@
       <div class="final-cta">
         <h2 id="final-title">Govern or <span class="fail">Fail</span></h2>
         <p>Enterprise AI does not become governable because a committee approves it. It becomes governable when the organisation can prove what happened, who owned it, and how the system was controlled in production.</p>
-        <p class="pub-note">The book publishes September 2026.</p>
-        <span class="btn btn-primary btn-soon">Available September 2026</span>
+        <p class="pub-note">Launching September 2026 — get notified and receive the Diagnostic Instruments now.</p>
+        <a class="btn btn-primary" href="#signup">Get the instruments</a>
       </div>
     </section>
   </main>
@@ -298,11 +316,19 @@
         <p class="footer-views">The views expressed are the author's own.</p>
       </div>
       <nav class="footer-links" aria-label="Footer">
-        <a href="source-notes.html">Resources</a>
-        <a href="mailto:hello@governorfail.com">Contact</a>
+        <a href="/instruments/">Instruments</a>
+        <a href="/essays/">Essays</a>
+        <a href="/updates/">Updates</a>
+        <a href="/source-notes.html">Source Notes</a>
+        <a href="/privacy/">Privacy</a>
+        <a href="/contact/">Contact</a>
       </nav>
     </div>
   </footer>
+
+  <script src="/assets/signup.js" defer></script>
+  <!-- Vercel Web Analytics (cookieless, no consent banner). Enable Web Analytics in the Vercel project settings. -->
+  <script defer src="/_vercel/insights/script.js"></script>
 
 </body>
 </html>

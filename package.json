@@ -1,0 +1,18 @@
+{
+  "name": "governorfail-website",
+  "version": "1.0.0",
+  "description": "Companion site for the book Govern or Fail by Fabio Aulico (Guardrail Press).",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs --drafts && node scripts/serve.mjs",
+    "og": "node scripts/generate-og.mjs",
+    "fonts": "node scripts/fetch-fonts.mjs",
+    "serve": "node scripts/serve.mjs"
+  },
+  "devDependencies": {
+    "@napi-rs/canvas": "^0.1.65",
+    "marked": "^12.0.2"
+  }
+}
