@@ -50,4 +50,4 @@ That is the entire discipline. The map is not the territory, and the register is
 
 ---
 
-*This is the diagnostic behind [Govern or Fail](/), a field report on why enterprise AI fails after the demo. If you want to see where your own estate actually sits — and measure your own gap between belief and reality — the [three-minute Quadrant assessment](/quadrant) will place you, and send you the position-specific instrument.*
+*This is the diagnostic behind [Govern or Fail](/), a field report on why enterprise AI fails after the demo. If you want a first read on where your own estate may sit, the [three-minute Quadrant assessment](/quadrant) will place you, and send you the position-specific instrument.*
