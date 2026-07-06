@@ -44,6 +44,12 @@ body {
 
 img { max-width: 100%; }
 
+/* Base link colour so no link ever falls back to the browser blue/purple.
+   Component rules (nav, footer, prose, article, etc.) override as needed. */
+a { color: var(--accent); }
+a:visited { color: var(--accent); }
+a:hover { color: var(--text); }
+
 a:focus-visible,
 .btn:focus-visible {
   outline: 2px solid var(--accent);

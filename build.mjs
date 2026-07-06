@@ -113,9 +113,19 @@ function parseFrontmatter(raw) {
   if (!m) return { data: {}, body: raw };
   const data = {};
   for (const line of m[1].split('\n')) {
-    const kv = line.match(/^([A-Za-z0-9_]+):\s*(.*)$/);
+    const kv = line.match(/^([A-Za-z0-9_]+):\s*(.*?)\s*$/);
     if (!kv) continue;
-    let val = kv[2].trim().replace(/^["']|["']$/g, '');
+    const rawVal = kv[2].replace(/\r$/, '');
+    let val;
+    if (rawVal.startsWith('"') && rawVal.endsWith('"') && rawVal.length >= 2) {
+      // double-quoted: unescape \" and \\
+      val = rawVal.slice(1, -1).replace(/\\"/g, '"').replace(/\\\\/g, '\\');
+    } else if (rawVal.startsWith("'") && rawVal.endsWith("'") && rawVal.length >= 2) {
+      // single-quoted: '' is a literal '
+      val = rawVal.slice(1, -1).replace(/''/g, "'");
+    } else {
+      val = rawVal;
+    }
     if (val === 'true') val = true;
     else if (val === 'false') val = false;
     data[kv[1]] = val;
