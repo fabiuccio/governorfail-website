@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vocabulary | Govern or Fail</title>
-  <meta name="description" content="Key concepts used in Govern or Fail: governance debt, shadow AI, runtime evidence, value velocity, vendor-embedded AI, governance discipline, and more.">
+  <title>Glossary | Govern or Fail</title>
+  <meta name="description" content="The glossary from Appendix B of Govern or Fail: governance debt, governance theatre, demonstrated governance, shadow AI, runtime control layer, challenge evidence, and the rest of the operational vocabulary.">
   <link rel="canonical" href="https://governorfail.com/vocabulary/">
 
   <!-- Open Graph -->
   <meta property="og:site_name" content="Govern or Fail">
   <meta property="og:url" content="https://governorfail.com/vocabulary/">
-  <meta property="og:title" content="Vocabulary | Govern or Fail">
-  <meta property="og:description" content="The core concepts behind the AI Governance Debt Quadrant: governance debt, runtime evidence, shadow AI, value velocity, governance discipline.">
+  <meta property="og:title" content="Glossary | Govern or Fail">
+  <meta property="og:description" content="The operational vocabulary of Govern or Fail — governance debt, governance theatre, demonstrated governance, shadow AI, runtime control layer.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://governorfail.com/assets/og-default.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Vocabulary | Govern or Fail">
-  <meta name="twitter:description" content="The core concepts behind the AI Governance Debt Quadrant.">
+  <meta name="twitter:title" content="Glossary | Govern or Fail">
+  <meta name="twitter:description" content="The operational vocabulary of Govern or Fail — governance debt, governance theatre, demonstrated governance, shadow AI, runtime control layer.">
   <meta name="twitter:image" content="https://governorfail.com/assets/og-default.png">
 
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -24,6 +24,151 @@
   <link rel="preload" href="/assets/fonts/archivo-800-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/fonts/fonts.css">
   <link rel="stylesheet" href="/styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    "name": "Govern or Fail — Glossary",
+    "description": "Appendix B of Govern or Fail: the operational vocabulary used throughout the book.",
+    "url": "https://governorfail.com/vocabulary/",
+    "inLanguage": "en",
+    "hasDefinedTerm": [
+      {
+        "@type": "DefinedTerm",
+        "name": "A2A (Agent-to-Agent Protocol)",
+        "description": "An emerging protocol pattern for communication and coordination between agents. In this book, A2A is discussed as part of the broader move toward interoperable agentic systems, not as a guarantee of governance by itself.",
+        "inDefinedTermSet": "https://governorfail.com/vocabulary/"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Agentic AI",
+        "description": "AI systems that can plan, use tools, retrieve information, call external systems, and carry work across multiple steps. The governance issue is not whether the system is conscious or autonomous in a philosophical sense. It is whether it can act operationally.",
+        "inDefinedTermSet": "https://governorfail.com/vocabulary/"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "AI governance",
+        "description": "The organisational discipline of keeping AI systems aligned to business intent, bounded by controls, monitored in production, and accountable when behaviour changes or fails.",
+        "inDefinedTermSet": "https://governorfail.com/vocabulary/"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "AI registry",
+        "description": "A maintained record of AI systems, owners, purposes, data access, technology providers, model dependencies, risk classification, and evidence status. A registry is only useful if it reflects the actual estate.",
+        "inDefinedTermSet": "https://governorfail.com/vocabulary/"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Audit trail",
+        "description": "The evidence needed to reconstruct what happened: inputs, retrieved sources, model or prompt version, tool calls, output, human intervention, policy enforcement, and change history where relevant.",
+        "inDefinedTermSet": "https://governorfail.com/vocabulary/"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Behavioural drift",
+        "description": "A change in the behaviour of an AI system over time, caused by model updates, prompt changes, data changes, workflow changes, user behaviour, or environmental context.",
+        "inDefinedTermSet": "https://governorfail.com/vocabulary/"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Certification",
+        "description": "Independent third-party confirmation that a defined management system or other specified object meets stated requirements within a given scope. Certification is useful but not equivalent to runtime governance.",
+        "inDefinedTermSet": "https://governorfail.com/vocabulary/"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Challenge evidence",
+        "description": "The specific records an organisation would need to defend one AI-supported decision if it were disputed: purpose, ownership, version, sources, applicable boundary, human intervention, and corrective action. See the customer challenge test in Chapter 10.",
+        "inDefinedTermSet": "https://governorfail.com/vocabulary/"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Data boundary",
+        "description": "The approved scope of data an AI system may access, retrieve, process, or expose. Weak data boundaries are a common source of AI governance failure.",
+        "inDefinedTermSet": "https://governorfail.com/vocabulary/"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Demonstrated governance",
+        "description": "Governance that can be shown with operational evidence, not merely described through policy, committee structure, or intent.",
+        "inDefinedTermSet": "https://governorfail.com/vocabulary/"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Governance debt",
+        "description": "The future cost of deploying AI capability before ownership, boundaries, monitoring, evidence, and accountability have been designed into the system.",
+        "inDefinedTermSet": "https://governorfail.com/vocabulary/"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Governance theatre",
+        "description": "The visible apparatus of governance without operational proof: policies, committees, registers, and statements that do not describe what actually happens in production.",
+        "inDefinedTermSet": "https://governorfail.com/vocabulary/"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Governed use",
+        "description": "Use of an AI system through a production route that applies approved boundaries, preserves evidence, and has a named accountable owner — as distinct from use that is merely permitted by policy.",
+        "inDefinedTermSet": "https://governorfail.com/vocabulary/"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Human-in-the-loop",
+        "description": "A control pattern in which human review or approval is part of the workflow. It is meaningful only if the reviewer has the information, time, authority, and independence needed to act.",
+        "inDefinedTermSet": "https://governorfail.com/vocabulary/"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "ISO/IEC 42001",
+        "description": "An international standard for AI management systems. In this book, it is treated as a useful management-system baseline, not a substitute for runtime control.",
+        "inDefinedTermSet": "https://governorfail.com/vocabulary/"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "MCP (Model Context Protocol)",
+        "description": "A protocol pattern for connecting AI systems to tools and data sources. In this book, MCP matters because governed connectivity is part of the production path.",
+        "inDefinedTermSet": "https://governorfail.com/vocabulary/"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Model versioning",
+        "description": "The ability to know which model version, prompt version, configuration, or relevant runtime state produced a given output or action.",
+        "inDefinedTermSet": "https://governorfail.com/vocabulary/"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Prompt injection",
+        "description": "An attack or failure pattern in which malicious or unintended instructions enter the context of an AI system and alter its behaviour.",
+        "inDefinedTermSet": "https://governorfail.com/vocabulary/"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "RAG (Retrieval-Augmented Generation)",
+        "description": "A pattern in which a model retrieves external information and uses it to produce an answer. RAG improves grounding but introduces governance questions about source quality, access control, indexing, and evidence.",
+        "inDefinedTermSet": "https://governorfail.com/vocabulary/"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Runtime control layer",
+        "description": "The production route through which AI access, data boundaries, logging, monitoring, policy enforcement, and evidence creation operate. The phrase describes a function, not a product name.",
+        "inDefinedTermSet": "https://governorfail.com/vocabulary/"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Shadow AI",
+        "description": "AI tools, features, integrations, or workflows used outside official governance, procurement, architecture, or security visibility.",
+        "inDefinedTermSet": "https://governorfail.com/vocabulary/"
+      },
+      {
+        "@type": "DefinedTerm",
+        "name": "Workflow redesign",
+        "description": "Changing how work is performed so AI becomes part of the process rather than a tool placed on top of the old process. The evidence base suggests this is one of the strongest differentiators of high performers.",
+        "inDefinedTermSet": "https://governorfail.com/vocabulary/"
+      }
+    ]
+  }
+  </script>
 </head>
 <body id="top">
 
@@ -50,8 +195,8 @@
       <div class="section-pad wrap notes-hero">
         <a class="back-link" href="/"><span aria-hidden="true">←</span> Back to the book</a>
         <p class="kicker">Vocabulary</p>
-        <h1 class="section-title">Key concepts</h1>
-        <p class="notes-intro">The working vocabulary behind <em class="title-ref">Govern or Fail</em> and the AI Governance Debt Quadrant. These terms are used precisely; here is what each one means.</p>
+        <h1 class="section-title">Glossary</h1>
+        <p class="notes-intro">This is Appendix B of <em class="title-ref">Govern or Fail</em>, reproduced in full. It defines the terms used in the book. It avoids proprietary framework names and focuses on operational vocabulary.</p>
       </div>
     </section>
 
@@ -59,52 +204,95 @@
       <div class="section-pad wrap" style="padding-top: 0;">
         <dl class="concepts">
           <div class="concept">
+            <dt>A2A (Agent-to-Agent Protocol)</dt>
+            <dd>An emerging protocol pattern for communication and coordination between agents. In this book, A2A is discussed as part of the broader move toward interoperable agentic systems, not as a guarantee of governance by itself.</dd>
+          </div>
+          <div class="concept">
+            <dt>Agentic AI</dt>
+            <dd>AI systems that can plan, use tools, retrieve information, call external systems, and carry work across multiple steps. The governance issue is not whether the system is conscious or autonomous in a philosophical sense. It is whether it can act operationally.</dd>
+          </div>
+          <div class="concept">
+            <dt>AI governance</dt>
+            <dd>The organisational discipline of keeping AI systems aligned to business intent, bounded by controls, monitored in production, and accountable when behaviour changes or fails.</dd>
+          </div>
+          <div class="concept">
+            <dt>AI registry</dt>
+            <dd>A maintained record of AI systems, owners, purposes, data access, technology providers, model dependencies, risk classification, and evidence status. A registry is only useful if it reflects the actual estate.</dd>
+          </div>
+          <div class="concept">
+            <dt>Audit trail</dt>
+            <dd>The evidence needed to reconstruct what happened: inputs, retrieved sources, model or prompt version, tool calls, output, human intervention, policy enforcement, and change history where relevant.</dd>
+          </div>
+          <div class="concept">
+            <dt>Behavioural drift</dt>
+            <dd>A change in the behaviour of an AI system over time, caused by model updates, prompt changes, data changes, workflow changes, user behaviour, or environmental context.</dd>
+          </div>
+          <div class="concept">
+            <dt>Certification</dt>
+            <dd>Independent third-party confirmation that a defined management system or other specified object meets stated requirements within a given scope. Certification is useful but not equivalent to runtime governance.</dd>
+          </div>
+          <div class="concept">
+            <dt>Challenge evidence</dt>
+            <dd>The specific records an organisation would need to defend one AI-supported decision if it were disputed: purpose, ownership, version, sources, applicable boundary, human intervention, and corrective action. See the <a href="/resources/#customer-challenge-test">customer challenge test</a> in Chapter 10.</dd>
+          </div>
+          <div class="concept">
+            <dt>Data boundary</dt>
+            <dd>The approved scope of data an AI system may access, retrieve, process, or expose. Weak data boundaries are a common source of AI governance failure.</dd>
+          </div>
+          <div class="concept">
+            <dt>Demonstrated governance</dt>
+            <dd>Governance that can be shown with operational evidence, not merely described through policy, committee structure, or intent.</dd>
+          </div>
+          <div class="concept">
             <dt>Governance debt</dt>
-            <dd>Every ungoverned deployment is a liability the organisation has not yet priced.</dd>
+            <dd>The future cost of deploying AI capability before ownership, boundaries, monitoring, evidence, and accountability have been designed into the system.</dd>
+          </div>
+          <div class="concept">
+            <dt>Governance theatre</dt>
+            <dd>The visible apparatus of governance without operational proof: policies, committees, registers, and statements that do not describe what actually happens in production.</dd>
+          </div>
+          <div class="concept">
+            <dt>Governed use</dt>
+            <dd>Use of an AI system through a production route that applies approved boundaries, preserves evidence, and has a named accountable owner — as distinct from use that is merely permitted by policy.</dd>
+          </div>
+          <div class="concept">
+            <dt>Human-in-the-loop</dt>
+            <dd>A control pattern in which human review or approval is part of the workflow. It is meaningful only if the reviewer has the information, time, authority, and independence needed to act.</dd>
+          </div>
+          <div class="concept">
+            <dt>ISO/IEC 42001</dt>
+            <dd>An international standard for AI management systems. In this book, it is treated as a useful management-system baseline, not a substitute for runtime control.</dd>
+          </div>
+          <div class="concept">
+            <dt>MCP (Model Context Protocol)</dt>
+            <dd>A protocol pattern for connecting AI systems to tools and data sources. In this book, MCP matters because governed connectivity is part of the production path.</dd>
+          </div>
+          <div class="concept">
+            <dt>Model versioning</dt>
+            <dd>The ability to know which model version, prompt version, configuration, or relevant runtime state produced a given output or action.</dd>
+          </div>
+          <div class="concept">
+            <dt>Prompt injection</dt>
+            <dd>An attack or failure pattern in which malicious or unintended instructions enter the context of an AI system and alter its behaviour.</dd>
+          </div>
+          <div class="concept">
+            <dt>RAG (Retrieval-Augmented Generation)</dt>
+            <dd>A pattern in which a model retrieves external information and uses it to produce an answer. RAG improves grounding but introduces governance questions about source quality, access control, indexing, and evidence.</dd>
+          </div>
+          <div class="concept">
+            <dt>Runtime control layer</dt>
+            <dd>The production route through which AI access, data boundaries, logging, monitoring, policy enforcement, and evidence creation operate. The phrase describes a function, not a product name.</dd>
           </div>
           <div class="concept">
             <dt>Shadow AI</dt>
-            <dd>The AI estate that exists in practice but not in the inventory.</dd>
+            <dd>AI tools, features, integrations, or workflows used outside official governance, procurement, architecture, or security visibility.</dd>
           </div>
           <div class="concept">
-            <dt>Vendor-embedded AI</dt>
-            <dd>AI shipped inside tools you already bought — governed by the vendor's choices, not yours, unless you make it your own.</dd>
-          </div>
-          <div class="concept">
-            <dt>Runtime evidence</dt>
-            <dd>Traces, logs, sources, and versions that show what the system actually did.</dd>
-          </div>
-          <div class="concept">
-            <dt>Described vs demonstrated</dt>
-            <dd>A policy describes governance. Only production behaviour demonstrates it.</dd>
-          </div>
-          <div class="concept">
-            <dt>Governance discipline</dt>
-            <dd>Evidence and enforcement — named owners, technically enforced boundaries, active monitoring — not the mere presence of a policy.</dd>
-          </div>
-          <div class="concept">
-            <dt>Value velocity</dt>
-            <dd>Attributable, quantified value reaching production — not activity counted as progress.</dd>
-          </div>
-          <div class="concept">
-            <dt>Deterministic control</dt>
-            <dd>Fixed boundaries and controls built around systems whose outputs are probabilistic.</dd>
-          </div>
-          <div class="concept">
-            <dt>Governed velocity</dt>
-            <dd>Speed that survives audit, because the path to production is designed, not negotiated.</dd>
-          </div>
-          <div class="concept">
-            <dt>Certified is not governed</dt>
-            <dd>A certificate attests a point in time. Governance operates continuously.</dd>
-          </div>
-          <div class="concept">
-            <dt>Architecture beats culture</dt>
-            <dd>Structural controls outlast good intentions, training sessions, and slogans.</dd>
+            <dt>Workflow redesign</dt>
+            <dd>Changing how work is performed so AI becomes part of the process rather than a tool placed on top of the old process. The evidence base suggests this is one of the strongest differentiators of high performers.</dd>
           </div>
         </dl>
-
-        <p class="concepts-line">See these ideas applied: <a href="/quadrant/">take the 3-minute Quadrant assessment →</a></p>
+        <p class="notes-disclaimer">Two axes from Chapter 5 are named in the book's Figure 5.1 rather than the glossary: <strong>governance discipline</strong> asks whether ownership, boundaries, monitoring, escalation, evidence, and change control actually operate — not whether they are documented; <strong>production value</strong> asks about measurable effect. They are a diagnostic lens for portfolio decisions, not a maturity model or scoring method.</p>
       </div>
     </section>
   </main>
