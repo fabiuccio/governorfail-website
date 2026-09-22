@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The AI Governance Debt Quadrant | Govern or Fail</title>
-  <meta name="description" content="A 3-minute self-assessment that maps your enterprise AI estate on the Governance Debt Quadrant. Free, instant result — your answers never leave your browser.">
+  <title>The Debt Quadrant self-reflection exercise | Govern or Fail</title>
+  <meta name="description" content="A self-reflection exercise that places your enterprise AI estate on the quadrant from Govern or Fail. Self-reported, not a score or an audit — your answers never leave your browser.">
   <link rel="canonical" href="https://governorfail.com/quadrant/">
 
   <!-- Open Graph -->
   <meta property="og:site_name" content="Govern or Fail">
   <meta property="og:url" content="https://governorfail.com/quadrant/">
-  <meta property="og:title" content="Where does your AI estate actually stand?">
-  <meta property="og:description" content="Ten questions, three minutes. Map your enterprise AI estate on the Governance Debt Quadrant — free, instant result.">
+  <meta property="og:title" content="Where would you place your AI estate?">
+  <meta property="og:description" content="Ten questions, three minutes. A self-reflection exercise built on the quadrant from Govern or Fail — self-reported, not a score or an audit.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://governorfail.com/assets/og-quadrant.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Where does your AI estate actually stand?">
-  <meta name="twitter:description" content="Ten questions, three minutes. Map your enterprise AI estate on the Governance Debt Quadrant — free, instant result.">
+  <meta name="twitter:title" content="Where would you place your AI estate?">
+  <meta name="twitter:description" content="Ten questions, three minutes. A self-reflection exercise built on the quadrant from Govern or Fail — self-reported, not a score or an audit.">
   <meta name="twitter:image" content="https://governorfail.com/assets/og-quadrant.png">
 
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -48,15 +48,20 @@
   <main id="main">
     <section>
       <div class="section-pad wrap quad-wrap">
-        <a class="back-link" href="/"><span aria-hidden="true">←</span> Back to the book</a>
+        <a class="back-link" href="/resources/"><span aria-hidden="true">←</span> Companion resources</a>
 
         <!-- Intro (prerendered; JS takes over on Start) -->
         <div class="quad-intro" id="quad-intro">
-          <p class="kicker">The Governance Debt Quadrant</p>
-          <h1 class="section-title">Where does your AI estate actually stand?</h1>
-          <p class="quad-lead">Answer ten questions — about three minutes — to get a first read on your AI governance position. This is a screening across the estate, not an audit. The full instrument is applied system by system.</p>
-          <button class="btn btn-primary" id="quad-start" type="button">Start the assessment</button>
-          <p class="quad-free">Free — no email needed for your result. Your answers never leave your browser; only your final result is submitted, and only if you ask for it by email.</p>
+          <p class="kicker">A self-reflection exercise</p>
+          <h1 class="section-title">Where would you place your AI estate?</h1>
+          <p class="quad-lead">Ten questions, about three minutes. They walk through estate visibility, governance discipline, and production value, and place your answers on the quadrant from Chapter 5 of <em class="title-ref">Govern or Fail</em>.</p>
+          <div class="quad-caveat">
+            <p><strong>What this is not.</strong> It is not a score, an audit, a benchmark, or a validated instrument. Every answer is self-reported and nothing is checked against your estate. The quadrant itself is, in the book's words, <em>a diagnostic lens for portfolio decisions, not a maturity model or scoring method</em> — and the book applies it system by system, not across an estate on average.</p>
+            <p><strong>What it is for.</strong> Getting a conversation started with the people who would have to defend a challenged decision, and finding out whether they would place the organisation where you would. The result is a prompt, not a finding.</p>
+          </div>
+          <button class="btn btn-primary" id="quad-start" type="button">Start the exercise</button>
+          <p class="quad-free">Free, and no email needed for your result. Your answers never leave your browser; only your final position is submitted, and only if you ask for the matching edition by email.</p>
+          <p class="quad-alt">Looking for the instruments the book actually points to? The customer challenge test, the technical control test, the four prerequisites and the Chapter&nbsp;11 scenario model are on the <a href="/resources/">resources page</a>, ungated.</p>
         </div>
 
         <!-- JS renders questions + result here -->
@@ -65,12 +70,12 @@
         <!-- No-JS fallback -->
         <noscript>
           <div class="quad-fallback">
-            <p>This assessment runs entirely in your browser and needs JavaScript enabled. Prefer email? Get the complete instrument — all four positions included — and it will arrive right after you confirm.</p>
+            <p>This exercise runs entirely in your browser and needs JavaScript enabled. Prefer email? Get the complete instrument — all four positions included — and it will arrive right after you sign up.</p>
             <form class="signup-form" action="https://app.kit.com/forms/9650426/subscriptions" method="post" novalidate>
               <label class="visually-hidden" for="nojs-email">Email address</label>
               <input class="signup-input" id="nojs-email" type="email" name="email_address" required autocomplete="email" placeholder="you@company.com">
               <button class="btn btn-primary" type="submit">Send me the instrument</button>
-              <p class="signup-fine">By subscribing you agree to the <a href="/privacy/">privacy policy</a>. Double opt-in — you'll confirm by email.</p>
+              <p class="signup-fine">By subscribing you agree to the <a href="/privacy/">privacy policy</a>. You will get a confirmation email to join the list.</p>
             </form>
           </div>
         </noscript>

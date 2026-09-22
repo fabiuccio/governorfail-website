@@ -1344,6 +1344,46 @@ section { border-bottom: 1px solid var(--border); }
   .instruments-list li { grid-template-columns: 36px 1fr; gap: 14px; }
 }
 
+/* ---------- Quadrant: framing and callouts ---------- */
+
+/* The "what this is not" panel on the exercise intro. */
+.quad-caveat {
+  margin: 28px 0 32px;
+  padding: 22px 24px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  background: var(--card);
+  max-width: 68ch;
+}
+.quad-caveat p {
+  margin: 0 0 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--mid);
+}
+.quad-caveat p:last-child { margin-bottom: 0; }
+.quad-caveat strong { color: var(--heading); }
+
+.quad-alt {
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--muted);
+  max-width: 68ch;
+}
+
+/* Figure 5.1 action word above the result headline. */
+.quad-kicker {
+  margin: 0 0 8px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* The belief-gap callout sits alongside the visibility one; distinguish them. */
+.quad-callout-belief { border-left-color: var(--muted); }
+
 /* ---------- Launch-state and shared utility bits ---------- */
 
 /* Keyboard bypass for the nav, which wraps to several rows on narrow screens. */

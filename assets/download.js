@@ -4,22 +4,24 @@
 (function () {
   'use strict';
   var BASE = '/downloads/q-7f3a9c/';
+  // Keys are the stable Kit `quadrant_result` values and must not change.
+  // Display names are the book's Figure 5.1 labels — see assets/quadrant.js.
   var EDITIONS = {
     reckless: {
-      file: 'debt-quadrant-reckless.pdf', name: 'Reckless',
-      recap: 'Real value, thin control — high-impact AI running ahead of the evidence, ownership, and rollback that would make it defensible.'
+      file: 'debt-quadrant-reckless.pdf', name: 'Value with exposure',
+      recap: 'Higher production value, lower governance discipline — the quadrant to act on first, because reliance is already forming. Prioritise for constraint, migration, or governance.'
     },
     stagnant: {
-      file: 'debt-quadrant-stagnant.pdf', name: 'Stagnant',
-      recap: 'Control without output — governance so cautious it also prevented deployment. The fix is calibration, not more process.'
+      file: 'debt-quadrant-stagnant.pdf', name: 'Controlled but low-value',
+      recap: 'Higher governance discipline, lower production value. Challenge further investment; simplify, repurpose, or retire. The fix is calibration, not more process.'
     },
     dormant: {
-      file: 'debt-quadrant-dormant.pdf', name: 'Dormant',
-      recap: 'Little value, little control — early days or abandoned pilots. The highest-return first move is usually deletion.'
+      file: 'debt-quadrant-dormant.pdf', name: 'Noise or residue',
+      recap: 'Lower value, lower discipline. Retire abandoned experiments, unused features, and unjustified tools — deletion usually returns more than governance investment at this stage.'
     },
     governed: {
-      file: 'debt-quadrant-governed.pdf', name: 'Governed',
-      recap: 'Value inside an enforced frame — the target state, as far as your ‘known’ estate goes.'
+      file: 'debt-quadrant-governed.pdf', name: 'Governed value',
+      recap: 'Value inside demonstrated governance discipline — the target state. Protect, learn from, and scale deliberately, as far as the estate you can see goes.'
     }
   };
   var FULL = { file: 'ai-governance-debt-quadrant-full.pdf' };
@@ -41,7 +43,7 @@
 
   if (ed) {
     href = BASE + ed.file;
-    if (title) title.textContent = 'The ' + ed.name + ' edition';
+    if (title) title.textContent = 'Your edition: ' + ed.name;
     if (recap) recap.textContent = ed.recap;
     if (link) link.textContent = 'Download the ' + ed.name + ' edition (PDF)';
   } else {
