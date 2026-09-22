@@ -1342,6 +1342,35 @@ section { border-bottom: 1px solid var(--border); }
   .final-cta { padding-top: 88px; padding-bottom: 88px; }
   .signup-inner { padding: 64px 24px; }
   .instruments-list li { grid-template-columns: 36px 1fr; gap: 14px; }
+  .scenario-controls { padding: 20px; gap: 16px; }
+  .test-list li { grid-template-columns: 32px 1fr; gap: 4px 12px; }
+  .resource-callout,
+  .scenario-warning,
+  .quad-caveat { padding: 20px; }
+}
+
+/* Narrow phones (360-400px). The nav has no hamburger by design — it wraps —
+   so give the wrapped rows room to breathe and stop the logo competing with
+   the links for the first row. The skip link matters most at this width. */
+@media (max-width: 420px) {
+  .site-nav { gap: 8px 14px; }
+  .nav-links {
+    gap: 10px 16px;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  .nav-links a { font-size: 13px; }
+  .nav-links .btn-buy {
+    width: 100%;
+    text-align: center;
+    margin-top: 4px;
+    padding: 10px 16px;
+  }
+  .resource-toc { gap: 8px 14px; }
+  .hero-ctas .btn,
+  .hero-ctas-centred .btn { width: 100%; text-align: center; }
+  .scenario-table th,
+  .scenario-table td { padding: 9px 12px; }
 }
 
 /* ---------- Companion resources ---------- */
