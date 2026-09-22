@@ -335,7 +335,7 @@ await mkdir(DIST, { recursive: true });
 // downloads/ would otherwise be publicly served and would list the PDF paths.
 const STATIC_FILES = ['index.html', '404.html', 'source-notes.html', 'styles.css', 'robots.txt'];
 const STATIC_DIRS = [
-  'assets', 'quadrant', 'download', 'updates',
+  'assets', 'resources', 'quadrant', 'download', 'updates',
   'privacy', 'contact', 'vocabulary', 'downloads'
 ];
 const noMarkdown = (src) => !src.toLowerCase().endsWith('.md');

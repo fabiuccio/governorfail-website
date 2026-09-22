@@ -1344,6 +1344,244 @@ section { border-bottom: 1px solid var(--border); }
   .instruments-list li { grid-template-columns: 36px 1fr; gap: 14px; }
 }
 
+/* ---------- Companion resources ---------- */
+
+.resource-toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--hairline);
+}
+.resource-toc a {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+}
+.resource-toc a:hover { color: var(--accent); }
+
+.resource-lede {
+  max-width: 72ch;
+  margin: 0 0 36px;
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--mid-strong);
+  text-wrap: pretty;
+}
+.resource-body {
+  max-width: 72ch;
+  margin: 0 0 24px;
+  color: var(--mid);
+  text-wrap: pretty;
+}
+.resource-note {
+  max-width: 72ch;
+  margin: 24px 0 0;
+  font-size: 15px;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+.resource-subhead {
+  margin: 48px 0 18px;
+  font-family: var(--display);
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--heading);
+}
+
+/* The numbered question sets for the two tests. */
+.test-list {
+  margin: 0 0 36px;
+  padding: 0;
+  list-style: none;
+  counter-reset: test;
+  max-width: 76ch;
+}
+.test-list li {
+  counter-increment: test;
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 4px 16px;
+  padding: 20px 0;
+  border-top: 1px solid var(--hairline);
+}
+.test-list li::before {
+  content: counter(test, decimal-leading-zero);
+  grid-row: 1 / span 2;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--accent);
+  padding-top: 3px;
+}
+.test-list h3 {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--heading);
+}
+.test-list p {
+  margin: 0;
+  color: var(--mid);
+  text-wrap: pretty;
+}
+
+/* "How to read the result" boxes. */
+.resource-callout {
+  max-width: 76ch;
+  margin: 32px 0 0;
+  padding: 22px 26px;
+  background: var(--card);
+  border-left: 3px solid var(--accent);
+}
+.resource-callout p {
+  margin: 0 0 12px;
+  color: var(--text);
+  text-wrap: pretty;
+}
+.resource-callout p:last-child { margin-bottom: 0; }
+
+/* Four prerequisites. */
+.prereq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+  margin: 36px 0 0;
+}
+.prereq {
+  padding: 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+.prereq-verb {
+  margin: 0 0 10px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.prereq h3 {
+  margin: 0 0 12px;
+  font-family: var(--display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--heading);
+}
+.prereq p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--mid);
+  text-wrap: pretty;
+}
+
+/* Scenario model. */
+.scenario-warning {
+  max-width: 76ch;
+  margin: 0 0 36px;
+  padding: 24px 26px;
+  background: var(--bg-alt);
+  border: 1px solid var(--accent);
+}
+.scenario-warning p {
+  margin: 0 0 14px;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--mid);
+  text-wrap: pretty;
+}
+.scenario-warning p:first-child { color: var(--heading); font-size: 16px; }
+.scenario-warning p:last-child { margin-bottom: 0; }
+
+.scenario-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px 24px;
+  margin: 0 0 28px;
+  padding: 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+.scenario-field { display: flex; flex-direction: column; gap: 6px; }
+.scenario-field label {
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+.scenario-field input {
+  padding: 9px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 15px;
+  width: 100%;
+}
+.scenario-field input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.scenario-unit {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fainter);
+}
+
+.scenario-crossover {
+  margin: 0 0 20px;
+  padding: 14px 18px;
+  background: var(--bg-alt);
+  border-left: 3px solid var(--accent);
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--heading);
+}
+
+/* Wide tables scroll inside their own container, never the page. */
+.scenario-table-wrap {
+  overflow-x: auto;
+  margin: 0 0 12px;
+  border: 1px solid var(--border);
+}
+.scenario-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--mono);
+  font-size: 14px;
+  min-width: 420px;
+}
+.scenario-table th,
+.scenario-table td {
+  padding: 10px 16px;
+  text-align: right;
+  border-bottom: 1px solid var(--hairline);
+}
+.scenario-table thead th {
+  text-align: right;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+  background: var(--bg-alt);
+}
+.scenario-table thead th:first-child,
+.scenario-table tbody th { text-align: left; color: var(--muted); font-weight: 400; }
+.scenario-table tbody td { color: var(--mid); }
+.scenario-table tbody tr:last-child th,
+.scenario-table tbody tr:last-child td { border-bottom: 0; }
+/* Rows where the governed path has caught up. */
+.scenario-table tbody tr.is-crossed td:last-child { color: var(--accent); }
+.scenario-table tbody tr.is-crossed { background: rgba(193, 79, 46, 0.06); }
+
 /* ---------- Quadrant: framing and callouts ---------- */
 
 /* The "what this is not" panel on the exercise intro. */
