@@ -32,7 +32,7 @@ Notice how they compound. A narrow definition of AI produces a narrow inventory.
 
 The survey evidence points in this direction from several angles, and it is worth being careful about what each kind of evidence can carry.
 
-Dataiku's 2026 CEO survey — commercially sponsored, and to be read as directional executive sentiment — reports that 96 percent of CEOs believe employees are using generative AI tools without approval. It reports executive belief; it does not independently measure the prevalence of that use ([source note 8](/source-notes.html)). BCG's 2025 *AI at Work* survey of 10,635 employees across 11 countries found 54 percent saying they would use AI tools their company had not authorised — a statement of intent, not of behaviour ([source note 18](/source-notes.html)). MIT Project NANDA, issued as preliminary findings rather than peer-reviewed research, describes a related tool-versus-enterprise pattern: consumer tools widely adopted for individual productivity while enterprise systems stall in formal workflows ([source note 17](/source-notes.html)).
+Dataiku's 2026 CEO survey — commercially sponsored, and to be read as directional executive sentiment — reports that 96 percent of CEOs believe employees are using generative AI tools without approval. It reports executive belief; it does not independently measure the prevalence of that use (source note 8 in the book). BCG's 2025 *AI at Work* survey of 10,635 employees across 11 countries found 54 percent saying they would use AI tools their company had not authorised — a statement of intent, not of behaviour (source note 18). MIT Project NANDA, issued as preliminary findings rather than peer-reviewed research, describes a related tool-versus-enterprise pattern: consumer tools widely adopted for individual productivity while enterprise systems stall in formal workflows (source note 17).
 
 CEOs expressing a belief about employee behaviour, employees describing what they would do, and a preliminary report documenting adoption patterns are three different kinds of evidence, and none of them independently establishes prevalence. What they establish is direction, which is enough to justify looking.
 
@@ -60,4 +60,4 @@ That is the entire discipline. The map is not the territory, and the register is
 
 ---
 
-*This is the diagnostic behind [Govern or Fail](/), a field report on why enterprise AI fails after the demo. The [companion resources](/resources/) carry the book's diagnostic tests — the customer challenge test, the technical control test, the four prerequisites, and the Chapter 11 scenario model — free and without an email gate.*
+*This is the diagnostic behind [Govern or Fail](/), a field report on why enterprise AI fails after the demo.*

@@ -1,7 +1,5 @@
 /* Static build for governorfail.com. Emits a self-contained dist/:
-   - copies the hand-authored pages/assets (index.html, source-notes.html,
-     quadrant/, download/, updates/, privacy/, contact/, styles.css, assets/,
-     robots.txt, downloads/) verbatim, and
+   - copies the book homepage, vocabulary, shared styles/assets, and robots.txt,
    - renders essays from content/essays/*.md into prerendered HTML plus the essays
      index, RSS feed, and sitemap.
    Source files (this script, content/, partials/, scripts/) are never copied, so
@@ -32,11 +30,8 @@ const NAV = `  <header class="site-header">
       <a class="logo" href="/"><span class="diamond" aria-hidden="true">◇</span>Govern or Fail</a>
       <div class="nav-links">
         <a href="/#book">Book</a>
-        <a href="/resources/">Resources</a>
         <a href="/essays/">Essays</a>
         <a href="/vocabulary/">Vocabulary</a>
-        <a href="/updates/">Updates</a>
-        <a href="/source-notes.html">Source Notes</a>
         <a class="btn-buy" href="${BUY_URL}">Get the book</a>
       </div>
     </nav>
@@ -52,14 +47,9 @@ const FOOTER = `  <footer class="site-footer">
         <p class="footer-views">The views expressed are the author's own.</p>
       </div>
       <nav class="footer-links" aria-label="Footer">
-        <a href="/resources/">Resources</a>
-        <a href="/quadrant/">Self-reflection exercise</a>
+        <a href="/#book">Book</a>
         <a href="/essays/">Essays</a>
-        <a href="/updates/">Updates &amp; Errata</a>
-        <a href="/source-notes.html">Source Notes</a>
         <a href="/vocabulary/">Vocabulary</a>
-        <a href="/privacy/">Privacy</a>
-        <a href="/contact/">Contact</a>
       </nav>
     </div>
   </footer>`;
@@ -71,7 +61,7 @@ function esc(s = '') {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-function layout({ title, description, canonical, ogType = 'website', content, withSignupJs = false, jsonLd = '' }) {
+function layout({ title, description, canonical, ogType = 'website', content, jsonLd = '' }) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,7 +100,7 @@ ${content}
 
 ${FOOTER}
 
-${withSignupJs ? '  <script src="/assets/signup.js" defer></script>\n' : ''}${ANALYTICS}
+${ANALYTICS}
 
 </body>
 </html>
@@ -154,13 +144,6 @@ function readingTime(text) {
   return Math.max(1, Math.round(words / 200));
 }
 
-async function loadSignupPartial() {
-  const raw = await readFile(path.join(ROOT, 'partials', 'signup-form.html'), 'utf8');
-  // strip the leading HTML comment block, keep the <section>…</section>
-  const idx = raw.indexOf('<section');
-  return idx === -1 ? raw : raw.slice(idx);
-}
-
 async function loadEssays() {
   const dir = path.join(ROOT, 'content', 'essays');
   let files = [];
@@ -190,7 +173,7 @@ async function loadEssays() {
 
 // ---- renderers -------------------------------------------------------------
 
-function essayPage(essay, signup) {
+function essayPage(essay) {
   const canonical = `${SITE}/essays/${essay.slug}/`;
   const content = `    <article class="section-pad wrap article">
       <a class="back-link" href="/essays/"><span aria-hidden="true">←</span> All essays</a>
@@ -202,7 +185,6 @@ ${marked.parse(essay.body)}
       <div class="essay-standing">
         <p class="plug"><em class="title-ref">Govern or Fail</em> — a diagnostic field report on enterprise AI governance, out now from Guardrail Press. <a href="${BUY_URL}">Get the book →</a></p>
       </div>
-${signup}
     </article>`;
   const jsonLd = `  <script type="application/ld+json">
   ${JSON.stringify({
@@ -228,7 +210,6 @@ ${signup}
     canonical,
     ogType: 'article',
     content,
-    withSignupJs: true,
     jsonLd
   });
 }
@@ -246,7 +227,7 @@ ${essays
   )
   .join('\n')}
         </ul>`
-    : `        <p class="essay-empty">No essays published yet. See the <a href="/resources/">companion resources</a>, or subscribe to get them by email as they appear.</p>`;
+    : `        <p class="essay-empty">No essays published yet.</p>`;
 
   const content = `    <section>
       <div class="section-pad wrap notes-hero">
@@ -298,17 +279,10 @@ ${items}
 }
 
 function sitemap(essays) {
-  // /download is intentionally excluded (noindex router page).
   const staticUrls = [
     `${SITE}/`,
-    `${SITE}/resources/`,
-    `${SITE}/quadrant/`,
     `${SITE}/essays/`,
-    `${SITE}/vocabulary/`,
-    `${SITE}/updates/`,
-    `${SITE}/privacy/`,
-    `${SITE}/contact/`,
-    `${SITE}/source-notes.html`
+    `${SITE}/vocabulary/`
   ];
   const urls = [...staticUrls, ...essays.map((e) => `${SITE}/essays/${e.slug}/`)];
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -322,7 +296,6 @@ ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join('\n')}
 
 const all = await loadEssays();
 const published = all.filter((e) => INCLUDE_DRAFTS || !e.draft);
-const signup = await loadSignupPartial();
 
 // Fresh, self-contained output directory. Only this is deployed, so source
 // files (build.mjs, content/, partials/, scripts/, drafts) are never served.
@@ -333,12 +306,14 @@ await mkdir(DIST, { recursive: true });
 // Documentation lives in docs/ and is never copied. Markdown is filtered out of
 // every copied directory as a second line of defence: a stray README inside
 // downloads/ would otherwise be publicly served and would list the PDF paths.
-const STATIC_FILES = ['index.html', '404.html', 'source-notes.html', 'styles.css', 'robots.txt'];
-const STATIC_DIRS = [
-  'assets', 'resources', 'quadrant', 'download', 'updates',
-  'privacy', 'contact', 'vocabulary', 'downloads'
+const STATIC_FILES = [
+  'index.html', '404.html', 'styles.css', 'robots.txt',
+  'assets/favicon.svg', 'assets/og-default.png',
+  'assets/Govern-or-Fail_ebook_1600x2560.png'
 ];
+const STATIC_DIRS = ['assets/fonts', 'vocabulary'];
 const noMarkdown = (src) => !src.toLowerCase().endsWith('.md');
+await mkdir(path.join(DIST, 'assets'), { recursive: true });
 for (const f of STATIC_FILES) {
   await cp(path.join(ROOT, f), path.join(DIST, f));
 }
@@ -351,7 +326,7 @@ await mkdir(path.join(DIST, 'essays'), { recursive: true });
 for (const essay of published) {
   const outDir = path.join(DIST, 'essays', essay.slug);
   await mkdir(outDir, { recursive: true });
-  await writeFile(path.join(outDir, 'index.html'), essayPage(essay, signup));
+  await writeFile(path.join(outDir, 'index.html'), essayPage(essay));
 }
 await writeFile(path.join(DIST, 'essays', 'index.html'), essaysIndex(published));
 await writeFile(path.join(DIST, 'essays', 'rss.xml'), rss(published));
