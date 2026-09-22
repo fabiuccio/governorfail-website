@@ -1,21 +1,39 @@
 /* Progressive enhancement for the generic email signup forms (home, essays).
-   Fires the ESP subscribe in the background (email captured in Kit) and then
-   sends the visitor straight to /download to get the file — delivery no longer
-   depends on a Kit automation. If JS is disabled, the form does a normal POST to
-   its action URL and Kit handles it. */
+
+   Flow: fire the ESP subscribe in the background, show the visitor an inline
+   confirmation, then send them to /download/ for the file. Delivery does not
+   depend on an ESP automation, which is why the form copy promises the download
+   now and describes the confirmation email as joining the list rather than as a
+   gate on the file.
+
+   Trade-off, deliberate: the POST uses mode:'no-cors' because Kit's form
+   endpoint sends no CORS headers, so the response is opaque and a failed
+   subscribe cannot be detected here. The visitor gets the file either way. We
+   prefer silent subscribe failure over withholding a download the copy just
+   promised. See README, "Email capture".
+
+   With JS disabled the form does a normal POST to its action URL and Kit
+   handles it, including its own confirmation page. */
 (function () {
-  var DEST = '/download'; // generic forms deliver the full instrument
+  'use strict';
+
+  var DEST = '/download/'; // trailing slash: vercel.json sets trailingSlash, so
+                           // '/download' would cost every signup a 308 hop.
+  var HANDOFF_MS = 600;    // long enough to read the confirmation line
+
   var forms = document.querySelectorAll('.signup-form');
-  forms.forEach(function (form) {
-    // The /quadrant result gate has its own handler (with the result field).
+  Array.prototype.forEach.call(forms, function (form) {
+    // The /quadrant result screen has its own handler (it posts the extra
+    // quadrant_* fields and delivers the matching edition in place).
     if (form.getAttribute('data-quadrant-gate')) return;
+
     form.addEventListener('submit', function (e) {
       var input = form.querySelector('input[type="email"]');
-      if (!input || !input.value || !input.checkValidity()) return; // let browser validate
+      if (!input || !input.value || !input.checkValidity()) return; // let the browser validate
       e.preventDefault();
-      var action = form.getAttribute('action') || '';
 
-      // keepalive lets the POST complete even as we navigate to /download.
+      var action = form.getAttribute('action') || '';
+      // keepalive lets the POST complete even as we navigate away.
       if (action.indexOf('http') === 0) {
         try {
           fetch(action, {
@@ -27,7 +45,18 @@
           });
         } catch (err) { /* deliver the file regardless */ }
       }
-      window.location.href = DEST;
+
+      // Confirm in place before handing off, so the success line is not dead
+      // markup and the visitor sees that something happened.
+      var success = form.querySelector('.signup-success');
+      var button = form.querySelector('button[type="submit"]');
+      if (button) {
+        button.disabled = true;
+        button.textContent = 'Starting your download…';
+      }
+      if (success) success.hidden = false;
+
+      window.setTimeout(function () { window.location.href = DEST; }, HANDOFF_MS);
     });
   });
 })();

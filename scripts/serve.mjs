@@ -26,8 +26,23 @@ const TYPES = {
   '.md': 'text/plain; charset=utf-8'
 };
 
+// Everything served must resolve inside dist/. Without this, a request for
+// /../../secrets would path.join its way out of the root.
+const ROOT_PREFIX = path.resolve(ROOT) + path.sep;
+function contained(p) {
+  const full = path.resolve(p);
+  return full === path.resolve(ROOT) || full.startsWith(ROOT_PREFIX);
+}
+
 async function resolve(urlPath) {
-  const clean = decodeURIComponent(urlPath.split('?')[0]);
+  let clean;
+  try {
+    clean = decodeURIComponent(urlPath.split('?')[0]);
+  } catch {
+    return null; // malformed percent-encoding
+  }
+  if (clean.includes('\0')) return null;
+
   const candidates = [];
   const base = path.join(ROOT, clean);
   candidates.push(base);
@@ -38,6 +53,7 @@ async function resolve(urlPath) {
   }
   if (clean === '/') candidates.unshift(path.join(ROOT, 'index.html'));
   for (const c of candidates) {
+    if (!contained(c)) continue;
     try {
       const s = await stat(c);
       if (s.isFile()) return c;
@@ -48,7 +64,18 @@ async function resolve(urlPath) {
 
 createServer(async (req, res) => {
   const file = await resolve(req.url);
-  if (!file) { res.writeHead(404); res.end('Not found'); return; }
+  if (!file) {
+    // Mirror the host: serve the custom 404 page with a 404 status.
+    try {
+      const notFound = await readFile(path.join(ROOT, '404.html'));
+      res.writeHead(404, { 'Content-Type': TYPES['.html'] });
+      res.end(notFound);
+    } catch {
+      res.writeHead(404, { 'Content-Type': TYPES['.txt'] });
+      res.end('Not found');
+    }
+    return;
+  }
   const body = await readFile(file);
   res.writeHead(200, { 'Content-Type': TYPES[path.extname(file)] || 'application/octet-stream' });
   res.end(body);

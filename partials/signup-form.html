@@ -1,25 +1,35 @@
 <!--
   CANONICAL SIGNUP FORM (single source of truth for ESP integration).
-  This generic (no hidden fields) block is embedded on the home page (#signup)
-  and at the foot of every essay. The /quadrant result screen builds its own
-  variant with hidden quadrant_* fields in assets/quadrant.js. The form action
-  is Kit form 9650426. To swap the email provider (Kit -> MailerLite, etc.),
-  replace the action URL https://app.kit.com/forms/9650426/subscriptions
-  everywhere it appears (index.html, this file, quadrant/index.html, and the
-  KIT_ACTION constant in assets/quadrant.js) with the provider's form action.
-  Email-only, no name field (lower friction). Double opt-in is configured in Kit.
-  Progressive enhancement lives in /assets/signup.js (inline success, no redirect).
+  This generic (no hidden fields) block is embedded at the foot of every essay.
+  The home page carries its own copy with a different id; the /quadrant result
+  screen builds its own variant with hidden quadrant_* fields in
+  assets/quadrant.js.
+
+  ESP: Kit form 9650426. To swap providers, replace the action URL
+  https://app.kit.com/forms/9650426/subscriptions everywhere it appears
+  (index.html, this file, quadrant/index.html, and the KIT_ACTION constant in
+  assets/quadrant.js) with the provider's form action, and update the
+  connect-src and form-action origins in vercel.json to match.
+
+  Email-only, no name field (lower friction).
+
+  ACTUAL FLOW (assets/signup.js): on submit we POST to the ESP in the
+  background, reveal the .signup-success line in place, then navigate to
+  /download/ which serves the file. The download does NOT wait on the
+  confirmation email - the copy below says so deliberately, because claiming
+  otherwise would be untrue. Kit's own double opt-in still governs list
+  membership. With JS disabled the form does a plain POST and Kit handles it.
 -->
 <section class="signup" id="signup" aria-labelledby="signup-heading">
   <div class="signup-inner">
     <h2 id="signup-heading">Get the Debt Quadrant instrument</h2>
-    <p>The complete AI Governance Debt Quadrant — all four positions — plus launch notification and occasional essays. No spam, unsubscribe anytime.</p>
+    <p>The complete AI Governance Debt Quadrant self-reflection instrument — all four positions — plus occasional essays and updates to the book. No spam, unsubscribe anytime.</p>
     <form class="signup-form" action="https://app.kit.com/forms/9650426/subscriptions" method="post" novalidate>
       <label class="visually-hidden" for="signup-email">Email address</label>
       <input class="signup-input" id="signup-email" type="email" name="email_address" required autocomplete="email" placeholder="you@company.com">
       <button class="btn btn-primary" type="submit">Send me the instrument</button>
-      <p class="signup-fine">By subscribing you agree to the <a href="/privacy/">privacy policy</a>. Double opt-in — you'll confirm by email.</p>
-      <p class="signup-success" role="status" hidden>Check your inbox to confirm — your edition arrives right after.</p>
+      <p class="signup-fine">By subscribing you agree to the <a href="/privacy/">privacy policy</a>. Your download starts straight away; the confirmation email is to join the list.</p>
+      <p class="signup-success" role="status" hidden>Your download is starting. Check your inbox to confirm your subscription.</p>
     </form>
   </div>
 </section>
