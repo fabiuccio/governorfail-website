@@ -1344,6 +1344,78 @@ section { border-bottom: 1px solid var(--border); }
   .instruments-list li { grid-template-columns: 36px 1fr; gap: 14px; }
 }
 
+/* ---------- Launch-state and shared utility bits ---------- */
+
+/* Keyboard bypass for the nav, which wraps to several rows on narrow screens. */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 12px 18px;
+  background: var(--accent);
+  color: var(--btn-text);
+  font-family: var(--mono);
+  font-size: 13px;
+  text-decoration: none;
+}
+.skip-link:focus {
+  left: 8px;
+  top: 8px;
+}
+
+/* Format/ISBN line under the hero buttons. */
+.hero-formats {
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--faint);
+}
+.hero-formats a { color: var(--mid); }
+.hero-formats a:hover { color: var(--text); }
+
+/* Introduction / back-matter lines bracketing the parts grid. */
+.part-intro {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 12px;
+  align-items: baseline;
+  margin: 0 0 40px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--hairline);
+  font-size: 15px;
+  color: var(--mid);
+}
+.part-intro.part-back {
+  margin: 48px 0 0;
+  padding: 24px 0 0;
+  border-bottom: 0;
+  border-top: 1px solid var(--hairline);
+  color: var(--muted);
+}
+.part-intro .ch-num {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--fainter);
+}
+
+.hero-ctas-centred { justify-content: center; }
+
+/* Simple prose lists (404, resources). */
+.plain-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: 70ch;
+}
+.plain-list li {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--hairline);
+  color: var(--mid);
+}
+.plain-list li:last-child { border-bottom: 0; }
+
 /* ---------- Reduced motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {

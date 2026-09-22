@@ -23,17 +23,21 @@ const INCLUDE_DRAFTS = process.argv.includes('--drafts');
 
 // ---- shared chrome (kept identical to the hand-authored pages) -------------
 
+// Retailer link for the "Get the book" call to action, used in the nav and the
+// standing book plug at the foot of every essay.
+const BUY_URL = 'https://www.amazon.com/Govern-Fail-Diagnostic-Enterprise-Governance/dp/B0HHY4JVRV/ref=tmm_pap_swatch_0';
+
 const NAV = `  <header class="site-header">
     <nav class="site-nav wrap" aria-label="Main">
       <a class="logo" href="/"><span class="diamond" aria-hidden="true">◇</span>Govern or Fail</a>
       <div class="nav-links">
         <a href="/#book">Book</a>
-        <a href="/quadrant/">Quadrant</a>
+        <a href="/resources/">Resources</a>
         <a href="/essays/">Essays</a>
+        <a href="/vocabulary/">Vocabulary</a>
         <a href="/updates/">Updates</a>
         <a href="/source-notes.html">Source Notes</a>
-        <a href="/contact/">Contact</a>
-        <a class="btn-buy" href="/quadrant/">Take the assessment</a>
+        <a class="btn-buy" href="${BUY_URL}">Get the book</a>
       </div>
     </nav>
   </header>`;
@@ -48,9 +52,10 @@ const FOOTER = `  <footer class="site-footer">
         <p class="footer-views">The views expressed are the author's own.</p>
       </div>
       <nav class="footer-links" aria-label="Footer">
-        <a href="/quadrant/">Quadrant</a>
+        <a href="/resources/">Resources</a>
+        <a href="/quadrant/">Self-reflection exercise</a>
         <a href="/essays/">Essays</a>
-        <a href="/updates/">Updates</a>
+        <a href="/updates/">Updates &amp; Errata</a>
         <a href="/source-notes.html">Source Notes</a>
         <a href="/vocabulary/">Vocabulary</a>
         <a href="/privacy/">Privacy</a>
@@ -66,7 +71,7 @@ function esc(s = '') {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-function layout({ title, description, canonical, ogType = 'website', content, withSignupJs = false }) {
+function layout({ title, description, canonical, ogType = 'website', content, withSignupJs = false, jsonLd = '' }) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,14 +92,19 @@ function layout({ title, description, canonical, ogType = 'website', content, wi
   <meta name="twitter:description" content="${esc(description)}">
   <meta name="twitter:image" content="${SITE}/assets/og-default.png">
 
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="alternate" type="application/rss+xml" title="Govern or Fail — Essays" href="/essays/rss.xml">
+  <link rel="preload" href="/assets/fonts/archivo-800-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/fonts/fonts.css">
   <link rel="stylesheet" href="/styles.css">
-</head>
+${jsonLd}</head>
 <body id="top">
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
 ${NAV}
 
-  <main>
+  <main id="main">
 ${content}
   </main>
 
@@ -190,17 +200,36 @@ function essayPage(essay, signup) {
 ${marked.parse(essay.body)}
       </div>
       <div class="essay-standing">
-        <p class="plug"><em class="title-ref">Govern or Fail</em> — a diagnostic field report on enterprise AI governance. <a href="/quadrant/">Take the 3-minute Quadrant assessment →</a></p>
+        <p class="plug"><em class="title-ref">Govern or Fail</em> — a diagnostic field report on enterprise AI governance, out now from Guardrail Press. <a href="${BUY_URL}">Get the book →</a></p>
       </div>
 ${signup}
     </article>`;
+  const jsonLd = `  <script type="application/ld+json">
+  ${JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: essay.title,
+    description: essay.description,
+    datePublished: essay.date,
+    dateModified: essay.date,
+    inLanguage: 'en',
+    mainEntityOfPage: { '@type': 'WebPage', '@id': canonical },
+    url: canonical,
+    image: `${SITE}/assets/og-default.png`,
+    author: { '@type': 'Person', name: 'Fabio Aulico' },
+    publisher: { '@type': 'Organization', name: 'Guardrail Press' },
+    isPartOf: { '@type': 'Blog', name: 'Govern or Fail — Essays', url: `${SITE}/essays/` }
+  }, null, 2).split('\n').join('\n  ')}
+  </script>
+`;
   return layout({
     title: `${essay.title} | Govern or Fail`,
     description: essay.description,
     canonical,
     ogType: 'article',
     content,
-    withSignupJs: true
+    withSignupJs: true,
+    jsonLd
   });
 }
 
@@ -217,7 +246,7 @@ ${essays
   )
   .join('\n')}
         </ul>`
-    : `        <p class="essay-empty">No essays published yet. Take the <a href="/quadrant/">Quadrant assessment</a> to get them by email as they appear.</p>`;
+    : `        <p class="essay-empty">No essays published yet. See the <a href="/resources/">companion resources</a>, or subscribe to get them by email as they appear.</p>`;
 
   const content = `    <section>
       <div class="section-pad wrap notes-hero">
@@ -272,6 +301,7 @@ function sitemap(essays) {
   // /download is intentionally excluded (noindex router page).
   const staticUrls = [
     `${SITE}/`,
+    `${SITE}/resources/`,
     `${SITE}/quadrant/`,
     `${SITE}/essays/`,
     `${SITE}/vocabulary/`,
@@ -300,13 +330,20 @@ await rm(DIST, { recursive: true, force: true });
 await mkdir(DIST, { recursive: true });
 
 // Copy the hand-authored static site into dist (explicit allowlist).
-const STATIC_FILES = ['index.html', 'source-notes.html', 'styles.css', 'robots.txt'];
-const STATIC_DIRS = ['assets', 'quadrant', 'download', 'updates', 'privacy', 'contact', 'vocabulary', 'downloads'];
+// Documentation lives in docs/ and is never copied. Markdown is filtered out of
+// every copied directory as a second line of defence: a stray README inside
+// downloads/ would otherwise be publicly served and would list the PDF paths.
+const STATIC_FILES = ['index.html', '404.html', 'source-notes.html', 'styles.css', 'robots.txt'];
+const STATIC_DIRS = [
+  'assets', 'quadrant', 'download', 'updates',
+  'privacy', 'contact', 'vocabulary', 'downloads'
+];
+const noMarkdown = (src) => !src.toLowerCase().endsWith('.md');
 for (const f of STATIC_FILES) {
   await cp(path.join(ROOT, f), path.join(DIST, f));
 }
 for (const d of STATIC_DIRS) {
-  await cp(path.join(ROOT, d), path.join(DIST, d), { recursive: true });
+  await cp(path.join(ROOT, d), path.join(DIST, d), { recursive: true, filter: noMarkdown });
 }
 
 // Generated essays + feeds.
