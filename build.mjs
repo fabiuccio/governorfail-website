@@ -321,6 +321,13 @@ for (const d of STATIC_DIRS) {
   await cp(path.join(ROOT, d), path.join(DIST, d), { recursive: true, filter: noMarkdown });
 }
 
+// Publish the book extract without exposing the rest of the manuscript folder.
+await mkdir(path.join(DIST, 'sample'), { recursive: true });
+await cp(
+  path.join(ROOT, 'manuscript', 'chapter_four.pdf'),
+  path.join(DIST, 'sample', 'chapter-four.pdf')
+);
+
 // Generated essays + feeds.
 await mkdir(path.join(DIST, 'essays'), { recursive: true });
 for (const essay of published) {

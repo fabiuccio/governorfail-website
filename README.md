@@ -56,7 +56,8 @@ scripts/fetch-fonts.mjs Downloads + self-hosts the webfonts (GDPR / no CDN)
 scripts/serve.mjs       Local preview server for dist/
 docs/                   Internal notes. NEVER copied into dist/.
 downloads/q-7f3a9c/     Private PDF delivery (unlinked, robots-disallowed)
-manuscript/             Source manuscript. Gitignored, never deployed.
+manuscript/             Source manuscript. Gitignored except chapter_four.pdf,
+                        which is published as /sample/chapter-four.pdf.
 assets/                 Cover, OG images, fonts, favicon, quadrant.js, scenario.js,
                         download.js, signup.js
 vercel.json             Vercel build config + security headers
@@ -270,8 +271,6 @@ non-Vercel host, remove that script and drop in your own cookieless analytics.)
 
 ## Open items
 
-- [ ] Fill the `{{SAMPLE_URL}}` placeholder (`index.html` hero) — Amazon Look
-      Inside or a sample PDF.
 - [ ] Fill `{{PUBLICATION_DATE_ISO}}` and `{{PAGE_COUNT}}` in the home-page Book
       JSON-LD.
 - [ ] Regenerate the five gated PDFs with the Figure 5.1 labels.
